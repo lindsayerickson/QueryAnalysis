@@ -7,7 +7,6 @@ import shutil
 import subprocess
 import sys
 import gzip
-import unifyQueryTypes
 from .utility import utility
 from . import config
 
@@ -116,6 +115,10 @@ for monthName in args.months.split(","):
                 hive_call += field + ", "
             hive_call = hive_call[:-2] + " "
 
+            ########## NEEDS UPDATE ##############
+            # We must query 
+            # https://datahub.wikimedia.org/dataset/urn:li:dataset:(urn:li:dataPlatform:hive,event.wdqs_external_sparql_query,PROD)/Schema?is_lineage_mode=false&schemaFilter=
+            # 
             hive_call += ' from wmf.wdqs_extract where uri_query<>"" ' \
                     + 'and year=\'' + str(args.year) +  '\' and month=\'' \
                     + str(months[monthName][0]) + '\' and day=\'' + str(day) + '\''
