@@ -130,12 +130,12 @@ for monthName in args.months.split(","):
             # raw log data file (with added headers)
             with gzip.open(rawLogDataDirectory + "QueryCnt"
                            + "%02d"%day  + ".tsv.gz", "wb") as dayfile:
-                dayfile.write(header)
+                dayfile.write(header.encode('utf-8'))
 
                 for filename in glob.glob(tempDirectory + '*'):
                     with open(filename) as temp:
                         for line in temp:
-                            dayfile.write(line)
+                            dayfile.write(line.encode('utf-8'))
 
             shutil.rmtree(tempDirectory)
 
