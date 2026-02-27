@@ -38,7 +38,6 @@ for monthName in args.months.split(","):
     mavenCall.append(mavenArguments)
 
     owd = os.getcwd()
-    os.chdir("..")
 
     print("Starting data processing using Anonymizer for " + monthName + ".")
 
