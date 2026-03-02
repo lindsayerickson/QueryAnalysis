@@ -1,4 +1,4 @@
-# Edit these paths to make sense with your setup.
+# Note to user: you must edit these paths to make sense with your setup.
 monthsFolder = "/home/your-user/querydata/months"
 queryReferenceDirectory = "/home/your-user/querydata/queryTypeReferenceFolder"
 fdupesExecutable = "/home/your-user/querydata/utility/fdupes"
