@@ -45,5 +45,18 @@ you can anonymize the extracted queries for the specified month(s).
 $ python3 -m tools.Anonymize exampleMonth -m exampleMonthsFolder/ -l
 ```
 
+## Caveat emptor
+
+This code won't work in the current form on the server.
+The `hive` call in `tools/QueryAnalysis.py` needs to be updated with the current location of the relevant data.
+See comments in that file.
+
+Depending on what is ultimately extracted from logs, downstream changes in the Java code will probably be necessary.
+For example, `InputHandlerTSV.java` currently expects a URL-encoded query, but as of March 2026 the logs are
+not stored in this form.
+
+Additionally, it will be important to verify that the call to `StandardizingSPARQLParser.anonymize()`
+in `OutputHandlerAnonymizer.java` correctly anonymizes the input queries.
+
 ## License
 The code in this repository is released under the [Apache 2.0](LICENSE.txt) license. External libraries used may have their own licensing terms.

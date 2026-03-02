@@ -115,10 +115,15 @@ for monthName in args.months.split(","):
                 hive_call += field + ", "
             hive_call = hive_call[:-2] + " "
 
-            ########## NEEDS UPDATE ##############
-            # We must query 
-            # https://datahub.wikimedia.org/dataset/urn:li:dataset:(urn:li:dataPlatform:hive,event.wdqs_external_sparql_query,PROD)/Schema?is_lineage_mode=false&schemaFilter=
-            # 
+            ########## NEEDS UPDATE! ##############
+            # This hive call is obsolete and doesn't return any results.
+            # The wmf.wdqs_extract data store is no longer the right place to look.
+            # The query needs to be updated based on the current internal data schema.
+            #
+            # The only fields that are used in the anonymization part of the code
+            # are |uri_query| and |ts|; the others are for analysis only.
+            #
+            # |uri_query| is assumed to have the form "?query=<URL-encoded query>"
             hive_call += ' from wmf.wdqs_extract where uri_query<>"" ' \
                     + 'and year=\'' + str(args.year) +  '\' and month=\'' \
                     + str(months[monthName][0]) + '\' and day=\'' + str(day) + '\''
